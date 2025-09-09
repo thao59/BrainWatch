@@ -1,0 +1,28 @@
+{% extends "brainwatch/layout.html" %}
+
+{% block body %}
+    <div class="setgoal_block">
+        {% if messages %}
+            {% for message in messages %}
+                <p {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+
+        <form class="setgoal_form" action="{% url 'editgoal' request.user.id %}" method="post">
+            {% csrf_token %}
+            <p class="setgoal_link"><a href="{% url 'profile' request.user.id %}"> ← Back to profile </a></p>
+            <p class="setgoal_title">Edit your goal here!</p>
+            <p class="setgoal_subheading">Daily Study Goal</p>
+            <input class="setgoal_input" type="number" placeholder="Hours" name="editgoal">
+            <button class="setgoal_button">Submit</button>
+        </form>
+
+        <div class="footer_div">
+            <footer>
+                <a class="to_index" href="{% url 'index' %}">Back to clock</a>
+            </footer>
+        </div>
+
+    </div>
+
+{% endblock %}

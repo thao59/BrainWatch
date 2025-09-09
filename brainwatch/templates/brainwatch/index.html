@@ -1,0 +1,63 @@
+{% extends "brainwatch/layout.html" %}
+
+
+{% block body %}
+    <div class="block_body">
+        {% if messages %}
+            {% for message in messages %}
+                <p {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</p>
+            {% endfor %}
+        {% endif %} 
+    
+        <div class="clock">
+            <select class="dropdown_option">
+                <option disabled selected>Select</option>
+                <option value="timer">Timer</option>
+                <option value="count_down">Count Down</option>
+                <option value="pomodoro">Pomodoro</option>
+            </select>
+
+            <p class="title"> Timer </p>
+            <div class="time_box">  
+                <p class="time">00:00</p>
+                <div class="countdown_timer">
+                    <input class="countdown_min" type="number" placeholder="00" min="0" max="99"> 
+                    <p>:</p> 
+                    <input class="countdown_sec" type="number" placeholder="00" min="0" max="59">
+                </div>
+                <div class="pomodoro">
+                    <div>
+                        <p class="pomodoro_title">Study time</p>
+                            <div class="pomodoro_study">
+                                <input class="pomo_study_min" type="number" placeholder="00" min="0" max="99"> 
+                                <p>:</p> 
+                                <input class="pomo_study_sec" type="number" placeholder="00" min="0" max="59">
+                            </div>
+                    </div>
+                    <div>
+                        <p class="pomodoro_title">Break time</p>
+                        <div class="pomodoro_break">
+                            <input class="pomo_break_min" type="number" placeholder="00" min="0" max="99"> 
+                            <p>:</p> 
+                            <input class="pomo_break_sec" type="number" placeholder="00" min="0" max="59">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown_repeat">
+                    <p class="cycle">Cycle</p>
+                    <select id="repeat_qty" class="dropdown_option">
+                        <option value="" disabled selected>Select</option>
+                    </select>
+                </div>
+
+                <div class="button_container">
+                    <button id="pause_button" class="button_timer">‖</button>
+                    <button id="stop_button" class="button_timer">■</button>
+                    <button id="reset_button" class="button_timer">↺</button>
+                </div>
+                <button id="start_button" class="button_timer">▶</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

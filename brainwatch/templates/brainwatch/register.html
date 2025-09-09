@@ -1,0 +1,22 @@
+{% extends "brainwatch/layout.html" %}
+
+{% block body %}
+    <div class="block_body">
+        {% if messages %}
+            {% for message in messages %}
+                <p {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+
+
+        <form class="form" action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <p class="form_title">Create Account</p>
+            <input name="email" type="email" placeholder="Email" autocomplete="off">
+            <input name="username" placeholder="Username" autocomplete="off" type="text">
+            <input type="password" name="password" placeholder="Create your password" autocomplete="off">
+            <input type="password" name="confirm_password" placeholder="Please confirm your password" autocomplete="off">
+            <button class="login_register">REGISTER</button>
+        </form>
+    </div>
+{% endblock %}

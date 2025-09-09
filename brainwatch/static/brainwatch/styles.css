@@ -1,0 +1,1033 @@
+html
+{
+    height: 100%;
+}
+
+.darkmode *
+{
+    transition: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body
+{
+    background: linear-gradient(135deg, #d4e4d4 0%, #dce8dc 50%, #d0e0d0 100%);
+    font-family: Noto Sans JP, sans-serif;
+    color: rgb(46, 47, 77);
+    font-size: 1.3rem;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+}
+
+body.darkmode svg
+{
+    color: #c0f0c0;
+}
+
+body.darkmode 
+{
+    background: #1e3a1e;
+}
+
+.bodytheme_toggle
+{
+    width: 85px;
+    height: 42px;
+    background: #d4e4d4;
+    border-radius: 25px;
+    margin-top: 1.5rem;
+    margin-right: 1.5rem;
+    box-shadow: 8px 8px 16px rgba(140, 160, 140, 0.7), -8px -8px 16px rgba(220, 240, 220, 0.8);
+    transition: all 0.3s ease-in-out;
+}
+
+body.darkmode .bodytheme_toggle 
+{
+    background: #2d4a2d;
+    box-shadow: 8px 8px 16px rgba(10, 20, 10, 0.6), -8px -8px 16px rgba(38, 57, 38, 0.8);
+    transition: all 0.3s ease-in-out;
+}
+
+.bodytheme_toggle:hover
+{
+    box-shadow: 6px 6px 12px rgba(163, 177, 198, 0.4), -6px -6px 12px rgba(255, 255, 255, 0.7);
+}
+
+body.darkmode .bodytheme_toggle:hover
+{
+    cursor: pointer;
+    box-shadow: 6px 6px 16px rgba(53, 99, 53, 0.6), -6px -6px 16px rgba(110, 167, 110, 0.2);
+}
+
+body.darkmode .bodytheme_toggle:active
+{
+    box-shadow: inset 4px 4px 8px rgba(10, 20, 10, 0.6), inset -4px -4px 8px rgba(60, 90, 60, 0.3);
+}
+
+.btn-secondary
+{
+    margin-top: 1.2rem;
+    margin-left: 1.5rem;
+    background:#d4e4d4;
+    border: none;  
+    border-radius: 30px;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    color: #2d4a2d;
+    box-shadow: 6px 6px 12px rgba(140, 160, 140, 0.5), -6px -6px 12px rgba(220, 240, 220, 0.9);
+    height: 38px;
+    width: 100px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+body.darkmode .btn-secondary
+{
+    background: #2d4a2d;
+    color: #a8d4a8;
+    box-shadow: 6px 6px 12px rgba(10, 20, 10, 0.6), -6px -6px 12px rgba(60, 90, 60, 0.4);
+}
+
+.btn-secondary:hover
+{
+    cursor: pointer;
+    transform: translateY(-8px);
+    background:#d4e4d4;
+    color: #2d4a2d;
+}
+
+body.darkmode .btn-secondary:hover 
+{
+    cursor: pointer;
+    transform: translateY(-4px);
+    background: #2d4a2d;
+    color: #a8d4a8;
+    box-shadow: 6px 6px 12px rgba(10, 20, 10, 0.6), -6px -6px 12px rgba(60, 90, 60, 0.4);
+}
+
+
+.clock 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    background:  rgba(212, 228, 212, 0.8);
+    border: 1px solid rgba(225, 255, 232, 0.5);
+    box-shadow: 20px 20px 12px rgba(140, 160, 140, 0.4), -20px -20px 12px rgba(220, 240, 220, 0.8);
+    text-align: center;
+    border-radius: 5rem;
+    flex: 1;
+    padding: 1rem;
+}
+
+body.darkmode .clock
+{
+    background: rgba(45, 74, 45, 0.9);
+    box-shadow: 20px 20px 40px rgba(0, 15, 0, 0.8), -10px -10px 30px rgba(80, 120, 80, 0.1);
+    border: 1px solid rgba(168, 212, 168, 0.3);
+}
+
+.title
+{
+    font-weight: 500;
+    font-size: 4rem;
+    color: #2d4a2d;
+    text-shadow: 2px 2px 4px rgba(140, 160 ,140, 0.35);
+}
+
+body.darkmode .title
+{
+    color: #90c890; 
+}
+
+.time_box
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.time
+{
+    font-size: 6rem;
+    font-weight: 700;
+    color: #2d4a2d;
+    border-radius: 4rem;
+    padding-right: 2.6rem;
+    padding-left: 2.6rem;
+    width: 400px;
+    height: 150px;
+    text-align: center;
+}
+
+body.darkmode .time
+{
+    color: #c0f0c0;
+}
+
+.button_timer
+{
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    border: none;
+    background-color: #4a6741;
+    border-radius: 13px;
+    color: white;
+    width: 55px;
+    height: 48px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 8px 8px 16px rgba(74, 103, 65, 0.4), -8px -8px 16px rgba(180, 200, 180, 0.3);
+}
+
+body.darkmode .button_timer
+{
+    background: linear-gradient(145deg, #a8d4a8, #90c290);
+    color: #1a2e1a;
+}
+
+
+.button_timer:hover
+{
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+
+.button_timer:focus
+{
+    background: #499162;
+    box-shadow: 0 4px 12px rgba(217,119,6, 0.3);
+    border: none;
+}
+
+.button_container
+{
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.form 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    height: 50%;
+    width: 50%;
+    background: rgba(159, 218, 149, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 20px 40px rgba(0 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+}
+
+body.darkmode .form
+{
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.form_title
+{
+    color:  rgba(91, 135, 53, 0.9);
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-shadow:  0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+body.darkmode .form_title
+{
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.form input
+{
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    background: rgba(46, 44, 44, 0.1);
+    color: rgb(74, 123, 94);
+    height: 40px;
+    width: 200px;
+    padding: 1rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease-in-out;
+    width: 40%;
+}
+
+
+body.darkmode .form input
+{
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.form input:focus
+{
+    outline: none;
+    border-color: rgba(120, 200, 80, 0.6);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(120, 200, 80, 0.2), 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: rgb(52, 72, 52);
+}
+
+body.darkmode .form input:focus 
+{
+    border-color: rgba(120, 200, 80, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(120, 200, 80, 0.15), 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.form input::placeholder
+{
+    color: rgb(74, 123, 94);
+    font-size: 0.8rem;
+}
+
+body.darkmode .form input::placeholder 
+{
+    color: rgba(255, 255, 255, 0.4);
+}
+
+
+button
+{
+    border: none;
+    background:  linear-gradient(135deg, #6b8e3a 0%, #5a7c2f 100%);
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    border-radius: 1rem;
+    width: 40%;
+    height: 40px;
+    box-shadow: 0 8px 24px rgba(107, 142, 58, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    margin-top: 1rem;
+    transition: all 0.4s ease-in-out;
+}
+
+body.darkmode button
+{
+    background: linear-gradient(135deg, #4a6b2a 0%, #3a5b1f 100%);
+    box-shadow: 0 8px 24px rgba(74, 107, 42, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+button:hover
+{
+    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow:  0 12px 32px rgba(107, 142, 58, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, #7a9d49 0%, #69893e 100%);
+}
+
+body.darkmode button:hover
+{
+    background: linear-gradient(135deg, #5a7b3a 0%, #4a6b2f 100%);
+    box-shadow: 0 12px 32px rgba(74, 107, 42, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.error, .success 
+{
+    background: rgba(198, 92, 92, 0.15);
+    border: none;
+    box-shadow: 6px 6px 12px rgba(92, 62, 58, 0.4);
+    border-radius: 8px;
+    padding: 0.7rem;
+    color: rgb(195, 41, 11);
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+body.darkmode .error, .success
+{
+    background: rgba(220, 53, 69, 0.15);
+    border: 1px solid rgba(220, 53, 69, 0.4);
+    border-left: 4px solid #ff6b7a;
+    color: #ff6b7a;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.dropdown_option
+{
+    background: #d4e4d4;
+    color: #2d4a2d;
+    border: none;  
+    border-radius: 15px;
+    padding: 10px 12px;
+    font-size: 1rem;
+    height: 40px;
+    width: 150px;
+    text-align: center;
+    margin-bottom: 1.6rem;
+    box-shadow: inset 4px 4px 8px rgba(140, 160, 140, 0.5), inset -4px -4px 8px rgba(220, 240, 220, 0.7);
+}
+
+body.darkmode .dropdown_option
+{
+    background: #1e3a1e;
+    color: #a8d4a8;
+    box-shadow: inset 4px 4px 8px rgba(10, 20, 10, 0.6), inset -4px -4px 8px rgba(60, 90, 60, 0.2);
+}
+
+.dropdown_option:focus 
+{
+    outline: none;
+}
+
+.countdown_timer, .pomodoro_study, .pomodoro_break
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    color:#2d4a2d;
+    padding-right: 2.6rem;
+    padding-left: 2.6rem;
+    border-radius: 4rem;
+    width: 400px;
+    height: 150px;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+body.darkmode .countdown_timer, body.darkmode .pomodoro_study, body.darkmode .pomodoro_break
+{
+    color: #c0f0c0;
+}
+
+.countdown_min, .countdown_sec, .pomo_study_min, .pomo_study_sec, .pomo_break_min, .pomo_break_sec
+{
+    width: 400px;
+    height: 150px;
+    font-weight: 700;
+    text-align: center;
+    border: none;
+    font-size: 6rem;
+    padding: 0;
+    background: rgba(255, 255, 255, 0);
+    color: #2d4a2d;
+}
+
+body.darkmode .countdown_min, body.darkmode .countdown_sec, body.darkmode .pomo_study_min, body.darkmode .pomo_study_sec, body.darkmode .pomo_break_min, body.darkmode .pomo_break_sec
+{
+    color: #c0f0c0;
+}
+
+.countdown_timer input:placeholder 
+{
+    text-align: center;
+}
+
+.pomodoro
+{
+    display: flex;
+    gap: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.cycle
+{
+    color: rgb(98, 142, 98);
+}
+
+body.darkmode .cycle 
+{
+    color: rgb(11, 208, 11);
+}
+
+.pomodoro_title
+{
+    text-align: center;
+    margin-bottom: 0;
+    color: rgb(98, 142, 98);
+}
+
+body.darkmode .pomodoro_title
+{
+    color: rgb(11, 208, 11);
+}
+
+
+.dropdown_repeat
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.profile_name 
+{
+    text-align: center;
+    color: #2d4a2d; 
+
+}
+
+body.darkmode .profile_name
+{
+    color: #c8f4c8;
+}
+
+.profile_body
+{
+    flex: 1;
+}
+
+.profile_display
+{
+    margin-top: 7rem;
+    margin-left: 4rem;
+    margin-right: 6rem;
+    background: #d4e4d4;
+    box-shadow: 20px 20px 40px rgba(140, 160, 140, 0.4), -20px -20px 40px rgba(220, 240, 220, 0.8);
+    border-radius: 20px;
+    border: 1px solid rgba(220, 240, 220, 0.5);
+    padding: 3rem;
+    font-size: 1.1rem;
+}
+
+.goal 
+{
+    display: flex; 
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.chart_container
+{
+    height: 300px;
+    width: 300px;
+    
+}
+
+body.darkmode .profile_display
+{
+    background: rgba(45, 74, 45, 0.9);
+    border: 1px solid rgba(168, 212, 168, 0.3);
+    box-shadow: 12px 12px 12px rgba(0, 15, 0, 0.8), -12px -12px 12px rgba(221, 231, 221, 0.1);
+}
+
+.study_title
+{
+    font-size: 1.3rem;
+    color: rgb(106, 199, 20);
+}
+
+.footer_div
+{
+    width: 100%;
+    display: flex;
+    flex-direction: flex-start;
+    margin-left: 1rem;
+    margin-top: 5rem;
+}
+
+footer
+{
+    margin-top: 5rem;
+    bottom: 20px;
+    text-align: left !important;
+
+}
+
+footer a, .set_goal a
+{
+    text-decoration: none!important;
+    color: #4a6741;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+body.darkmode footer a, body.darkmode .set_goal a
+{
+    color: #b1dfa3;
+}
+
+footer a:hover
+{
+    cursor: pointer;
+    text-shadow: 11px 11px 8px rgba(140, 160, 140, 0.6);
+    transform: translateY(-3px);
+}
+
+.set_goal
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+}
+
+.setgoal_block, .block_body
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    gap: 2rem;
+    width: 100%;
+}
+
+.setgoal_form
+{
+    background: rgba(212, 228, 212, 0.95);
+    box-shadow: 15px 15px 30px rgba(140, 160, 140, 0.3), -15px -15px 30px rgba(220, 240, 220, 0.7);
+    border:  1px solid rgba(220, 240, 220, 0.5);
+    color: #2d4a2d;
+    text-shadow: 2px 2px 4px rgba(140, 160, 140, 0.4);
+    font-size: 2rem;
+    padding: 2.5rem;
+    font-weight: 500;
+    border-radius: 1.3rem;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    margin-top: 5rem;
+}
+
+body.darkmode .setgoal_form
+{
+    background: rgba(45, 74, 45, 0.9);
+    border: 1px solid rgba(168, 212, 168, 0.3);
+    box-shadow: 15px 15px 30px rgba(0, 15, 0, 0.7), -8px -8px 20px rgba(80, 120, 80, 0.1);
+    color: #b1dfa3;
+}
+
+.setgoal_form a
+{
+    color: #4a6741;
+    text-decoration: none;
+    font-size: 1rem;
+    text-shadow: 2px 2px 4px rgba(140, 160, 140, 0.3);
+    margin-bottom: 0 !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.setgoal_subheading, .setgoal_link
+{
+    color: #4a6741;
+    font-size: 1rem;
+    text-shadow: 2px 2px 4px rgba(140, 160, 140, 0.3);  
+    margin-bottom: 0;
+}
+
+body.darkmode .setgoal_subheading
+{
+    color:#a8d4a8;
+}
+
+body.darkmode .setgoal_form a
+{
+    color: #a8d4a8;
+    text-shadow: 2px 2px 4px rgba(0, 15, 0, 0.4);
+}
+
+.setgoal_form a:hover
+{
+    cursor: pointer;
+    text-shadow: 5px 5px 8px rgba(81, 93, 81, 0.6);
+}
+
+body.darkmode .setgoal_form a:hover
+{
+    cursor: pointer;
+    text-shadow: 2px 2px 8px rgba(0, 15, 0, 0.8), 0 0 12px rgba(168, 212, 168, 0.3);
+}
+
+.setgoal_input
+{
+    background: #d4e4d4;
+    border-radius: 15px;
+    border: none;
+    color:  #2d4a2d;  
+    height: 36px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: inset 4px 4px 8px rgba(140, 160, 140, 0.5), inset -4px -4px 8px rgba(220, 240, 220, 0.7);
+    padding-left: 1rem;
+}
+
+body.darkmode .setgoal_input
+{
+    background: #1e3a1e;
+    color: #c8f4c8;
+    box-shadow: inset 4px 4px 8px rgba(10, 20, 10, 0.6), inset -4px -4px 8px rgba(60, 90, 60, 0.2);
+}
+
+.setgoal_input::placeholder
+{
+    color: #2d4a2d;
+    font-size: 1rem;
+}
+
+body.darkmode .setgoal_input::placeholder
+{
+    color: #a8d4a8;
+}
+
+.setgoal_input:focus
+{
+    outline: none;
+    box-shadow: inset 6px 6px 12px rgba(140, 160, 140, 0.6), inset -6px -6px 12px rgba(220, 240, 220, 0.8);
+}
+
+body.darkmode .setgoal_input:focus
+{
+    box-shadow: inset 6px 6px 12px rgba(10, 20, 10, 0.8), inset -6px -6px 12px rgba(60, 90, 60, 0.3),
+}
+
+.setgoal_button
+{
+    background: linear-gradient(145deg, #4a6741, #5a7751);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 6px 6px 12px rgba(74, 103, 65, 0.4), -4px -4px 8px rgba(180, 200, 180, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+body.darkmode .setgoal_button
+{
+    background: linear-gradient(145deg, #a8d4a8, #90c290);
+    color: #1a2e1a;
+    box-shadow: 6px 6px 12px rgba(0, 15, 0, 0.6), 0 0 15px rgba(168, 212, 168, 0.2);
+}
+
+.setgoal_button:hover
+{
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+
+.setgoal_button:focus 
+{
+    outline: none;
+}
+
+.setgoal_button:active
+{
+    background: linear-gradient(135deg, #648735 0%, #7ecb26 100%);
+}
+
+.goal_display
+{
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.goal_display button
+{
+    background: #d4e4d4;
+    box-shadow: 4px 4px 8px rgba(140, 160, 140, 0.4), -4px -4px 8px rgba(220, 240, 220, 0.8);
+    border-radius: 16px;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 1rem;
+    height: 40px;
+    width: 100px;
+
+}
+
+body.darkmode .goal_display button
+{
+    background: #2d4a2d;
+    color: #b5efb5;
+    box-shadow: 4px 4px 8px rgba(10, 20, 10, 0.6), -5px -5px 8px rgba(60, 90, 60, 0.4);
+}
+
+.goal_display button:hover
+{
+    cursor: pointer;  
+    transform: translateY(-5px);
+    overflow: hidden;
+}
+
+.full_bar 
+{
+    background: rgba(140, 160, 140, 0.2);
+    border-radius: 12px;
+    height: 16px;
+    width: 80%;
+    margin-bottom: 1rem;
+}
+
+boday.darkmode .full_bar
+{
+    background: rgba(220, 241, 220, 0.2);
+}
+
+.progress
+{
+    background: #4a6741;
+    height: 100%;
+    border-radius: 12px;
+    transition: width 0.5s ease;
+}
+
+body.darkmode .progress 
+{
+    background: #aaed96;
+}
+
+.profile_title
+{
+    color: #4a6741;
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+    margin-top: 1rem;
+}
+
+body.darkmode .profile_title
+{
+    color: #a8d4a8;
+}
+
+.profile_content
+{
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+    color: #1a2e1a; 
+}
+
+body.darkmode .profile_content
+{
+    color: #c8f4c8;
+}
+
+@media (max-width: 319px) {
+    .clock {
+        max-width: 260px;
+        height: 300px;
+        border-radius: 1rem;
+        min-width: 260px;
+        box-shadow: 
+            6px 6px 4px rgba(140, 160, 140, 0.4), 
+            -6px -6px 4px rgba(220, 240, 220, 0.8);
+    }
+}
+
+
+@media (max-width: 500px) and (min-width: 320px) {
+    .clock {width: 80%; max-height: 360px; border-radius: 1.5rem; min-width: 280px; box-shadow: 8px 8px 5px rgba(140, 160, 140, 0.4), -8px -8px 5px rgba(220, 240, 220, 0.8);}
+    .block_body {width: 300px; position: relative;}
+    .bodytheme_toggle { position: absolute; right: 1%; top: -0.5%; width: 50px;} 
+    .btn-secondary { position: absolute; left: 3%;}
+    .title {font-size: 1.7rem; margin: 0.5rem;}
+    .time {font-size: 3rem; padding: 0; width: 200px; height: 50%;}
+    .dropdown_option {margin: 0.5rem;}
+    .countdown_min, .countdown_sec {font-size: 3rem; height: auto;}
+    .pomo_study_min, .pomo_study_sec, .pomo_break_min, .pomo_break_sec, .pomodoro p  { font-size: 2.1rem; height: auto;}
+    .countdown_timer {height: 80px; margin-bottom: 0.5rem; width: 200px;}
+    .pomodoro_study, .pomodoro_break {height: auto; margin-bottom: 0.5rem; width: 130px; padding: 0;}
+    .time_box { width: 200px;}
+    .pomodoro_title, .cycle { font-size: 0.8rem !important;}
+    .pomodoro { width: 300px; gap: 0; justify-content: center;}
+    .button_timer {font-size: 0.8rem; height: 33px; width: 40px; margin-top: 0.2rem; border-radius: 16px;}
+    .profile_title {font-size: 0.7rem;}
+    .profile_content { font-size: 0.9rem; }
+    .set_goal a{ font-size: 0.6rem;}
+    footer a {font-size: 0.9 rem; position: absolute; left: 5%;}
+    .profile_display { margin: auto; margin-top: 5rem; padding: 1rem; width: 80%; margin-bottom: 8rem;} 
+    .profile_body {margin-top: 2rem;}
+    .goal {flex-direction: column; gap: 1rem;}
+    .set_goal {flex: 1;}
+    .setgoal_form { font-size: 1.3rem; width: 80%; text-align: center; margin-top: 8rem;}
+    .goal_display button {width: 70px; height: 30px;}
+    .form { width: 80%;}
+    .form_title {font-size: 1.4rem;}
+    .form input {width: 60%; height: 30px;}
+    .dropdown_repeat {margin-bottom: 0;}
+    .footer_div { margin-top: 3rem;}
+    .full_bar {width: 70%; margin-bottom: 0;}
+    .goal_display {gap: 3rem;}
+    button {height: 38px; font-size: 0.9rem; width: 40%;}
+    .chart_container {width: 200px; height: 200px;}
+    .login_register {width: 60%;}
+}
+
+@media (max-width: 767px) and (min-width: 501px)
+{
+    .clock {width: 80%; max-height: 360px; border-radius: 1.5rem; min-width: 280px; box-shadow: 8px 8px 5px rgba(140, 160, 140, 0.4), -8px -8px 5px rgba(220, 240, 220, 0.8);}
+    .block_body {width: 300px; position: relative;}
+    .bodytheme_toggle { position: absolute; right: 1%; top: -0.5%;} 
+    .btn-secondary { position: absolute; left: 3%;}
+    .title {font-size: 1.7rem; margin: 0.5rem;}
+    .time {font-size: 3rem; padding: 0; width: 200px; height: 50%;}
+    .dropdown_option {margin: 0.7rem;}
+    .countdown_min, .countdown_sec {font-size: 3rem; height: auto;}
+    .pomo_study_min, .pomo_study_sec, .pomo_break_min, .pomo_break_sec, .pomodoro p  { font-size: 2.1rem; height: auto;}
+    .countdown_timer {height: 80px; margin-bottom: 0.5rem; width: 200px; font-size: 3rem;}
+    .pomodoro_study, .pomodoro_break {height: auto; margin-bottom: 0.5rem; width: 150px; padding: 0;}
+    .time_box { width: 200px;}
+    .pomodoro_title { font-size: 1rem !important;}
+    .cycle { font-size: 1rem !important; margin-bottom: 0;}
+    .pomodoro { width: 300px; gap: 0.8rem;}
+    .button_timer {font-size: 0.8rem; height: 33px; width: 40px; margin-top: 0.2rem; border-radius: 16px;}
+    .profile_content { font-size: 1rem; }
+    .goal {flex-direction: column; gap: 1.2rem;}
+    .set_goal a{ font-size: 0.8rem;}
+    .chart_container {width: 200px; height: 200px;}
+    footer a {font-size: 0.9 rem; position: absolute; left: 5%;}
+    .profile_display { margin-right: 5rem; width: 70%; margin-left: 5rem; padding: 1.5rem;}
+    .profile_body {margin-top: 2rem;}
+    .profile_name {font-size: 1.3rem;}
+    .profile_title {font-size: 0.8rem; margin: 0;}
+    .profile_content {font-size: 1.1rem;}
+    .full_bar {width: 87%;}
+    .set_goal {gap: 0.4rem;}
+    .setgoal_form { font-size: 1.3rem; width: 80%; text-align: center; margin-top: 8rem;}
+    .form { width: 70%;}
+    .form input {width: 70%;}
+    .login_register {width: 70%;}
+    .dropdown_repeat {margin-bottom: 0;}
+    .footer_div { margin-top: 1rem;}
+    .goal_display {gap: 5rem;}
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+    .clock {width: 77%; max-height: 60%; border-radius: 1.5rem; min-width: 280px; box-shadow: 8px 8px 5px rgba(140, 160, 140, 0.4), -8px -8px 5px rgba(220, 240, 220, 0.8); gap: 0.4rem;}
+    .block_body {width: 300px; position: relative;}
+    .bodytheme_toggle { position: absolute; right: 1%; top: 0;} 
+    .btn-secondary { position: absolute; left: 50%; font-size: 1.4rem; height: 50px; width: 130px;}
+    .title {font-size: 3.6rem; margin-bottom: 0;}
+    .time {font-size: 6rem; padding: 1rem; width: auto;}
+    .dropdown_option {margin: 1.3rem; height: 50px; width: 200px; border-radius: 1.4rem; font-size: 1.4rem;}
+    .countdown_min, .countdown_sec {font-size: 6rem; }
+    .pomo_study_min, .pomo_study_sec, .pomo_break_min, .pomo_break_sec, .pomodoro p  {font-size: 4.3rem; height: auto;}
+    .countdown_timer {height: 80px; margin: 1.2rem; width: 300px;}
+    .pomodoro_study, .pomodoro_break {height: auto; margin-bottom: 0.5rem; max-width: 240px;padding: 0;}
+    .time_box { width: 200px;}
+    .pomodoro_title, .cycle { font-size: 1.5rem !important; margin-bottom: 0.3rem;}
+    .pomodoro { max-width: 600px; gap: 3rem;}
+    .button_timer {font-size: 1.2rem; height: 43px; width: 47px; margin-top: 1rem; border-radius: 16px;}
+    .set_goal a{ font-size: 1rem;}
+    footer a {font-size: 1.5rem !important; position: absolute; left: 5%; margin-top: 3rem;}
+    .profile_display { width: 77%; margin-left: 6rem; margin-top: 10rem; height: 60%; padding: 1.5rem; padding-left: 1.8rem;}
+    .profile_body {margin-top: 3rem;}
+    .profile_name { font-size: 2.6rem;}
+    .profile_title {font-size: 1.1rem;}
+    .profile_content {font-size: 1.4rem; font-weight: 400;}
+    .goal_display { gap: 6rem;}
+    .goal_display button {width: 120px; height: 50px; border-radius: 1.3rem;}
+    .set_goal {gap: 0.4rem;}
+    .setgoal_form { font-size: 1.7rem; width: 80%; text-align: center; margin-top: 5rem; height: 40%;}
+    .setgoal_form a, .setgoal_subheading { font-size: 1.3rem;}
+    .setgoal_title {font-size: 2.3rem;}
+    .setgoal_input {height: 50px; width: 60%; border-radius: 1.4rem; margin-bottom: 0;}
+    .setgoal_button {width: 30%; font-size: 1.2rem; height: 43px; border-radius: 1.5rem;}
+    .form { width: 70%; gap: 1.3rem;}
+    .form_title {font-size: 2.6rem;} 
+    .form input {width: 55%; height: 50px; border-radius: 1.5rem;}
+    .login_register {width: 55%;}
+    button {width: 30%; height: 46px; border-radius: 1.4rem;}
+    .dropdown_repeat {margin-bottom: 0;}
+    .footer_div { margin-top: 3rem;}
+    button {width: 35%;}
+    .full_bar { width: 90%; height: 27px;}
+}
+
+@media (max-width: 1100px) and (min-width: 992px) {
+    .clock {width: 75%; border-radius: 4rem; gap: 1rem; max-height: 580px;}
+    .bodytheme_toggle { position: absolute; right: 1%; top: 2%; width: 110px;} 
+    .btn-secondary { position: absolute; left: 6%; top: 3%; font-size: 1.4rem; height: 50px; width: 140px;}
+    .setgoal_block {margin-top: 10rem;}
+    .profile_display { padding: 2rem; margin-top: 15rem; width: 80%; margin-left: 6rem;}
+    .profile_name {font-size: 3rem;}
+    .profile_title { font-size: 1.5rem;}
+    .profile_content {font-size: 2rem; margin-top: 0.3rem;}
+    .full_bar {height: 1.3rem; width: 80%;}
+    .set_goal {margin-left: 1.5rem;}
+    footer {margin-top: 8rem; margin-left: 1.5rem;}
+    footer a { font-size: 1.6rem;}
+    .title {font-size: 3rem; margin-bottom: 0;}
+    .time { font-size: 6rem; width: auto;}
+    .pomo_study_min, .pomo_study_sec, .pomo_break_min, .pomo_break_sec {font-size: 6rem; height: auto;}
+    .countdown_min, .countdown_sec {margin-bottom: 2rem;}
+    .countdown_timer {height: 80px; margin: 1.2rem; width: 300px;}
+    .pomodoro_study, .pomodoro_break {height: 100px; width: 300px; margin-bottom: 0.5rem;}
+    .dropdown_option { margin-bottom: 1rem; height: 50px; width: 200px; font-size: 1.5rem;}
+    .pomodoro_title, .cycle { font-size: 1.5rem;}
+    .button_timer { font-size: 1rem; height: 40px; margin-top: 0.6rem;}
+    .pomodoro { gap: 4.5rem;}
+    .dropdown_repeat {margin-top: 2rem;}
+    .goal_display {gap: 7rem;}
+    .goal_display button { width: 150px; height: 50px; border-radius: 1.3rem;}
+    .set_goal a {font-size: 1.4rem;}
+    .setgoal_form { margin-top: 2rem; max-width: 75%; height: auto; gap: 1.5rem;}
+    .setgoal_form a, .setgoal_subheading { font-size: 1.6rem;}
+    .setgoal_title {font-size: 3rem;}
+    .setgoal_input {height: 50px; width: 60%; border-radius: 1.4rem; margin-bottom: 0;}
+    .setgoal_button {width: 30%; font-size: 1.2rem; height: 43px; border-radius: 1.5rem;}
+    .form { width: 60%; gap: 1rem; padding: 1.4rem; height: 60%;}
+    .form_title {font-size: 2rem; margin-bottom: 0;} 
+    .form input {width: 60%; height: 45px; border-radius: 1.5rem;}
+    .login_register{width: 60%;}
+    button {width: 30%; height: 46px; border-radius: 1.4rem;}
+}
+
+
+@media (min-width: 1101px) {
+    .clock {min-width: 40%; max-width: 60%; border-radius: 4rem; gap: 1rem; max-height: 580px; padding: 1rem;}
+    .bodytheme_toggle { position: absolute; right: 1%; top: 2%; width: 110px;} 
+    .btn-secondary { position: absolute; left: 6%; top: 3%; font-size: 1.4rem; height: 50px; width: 140px;}
+    .setgoal_block {margin-top: 10rem;}
+    .profile_display {height: auto; padding: 2rem; margin-top: 12rem; width: 62%; margin-left: auto; margin-right: auto;}
+    .profile_name {font-size: 2rem;}
+    .profile_title { font-size: 1rem;}
+    .profile_content {font-size: 1.3rem; margin-top: 0.3rem;}
+    .full_bar {height: 1.3rem; width: 100%;}
+    .set_goal {margin-left: 1.5rem;}
+    footer {margin-top: 6.8rem; margin-left: 1.5rem;}
+    footer a { font-size: 1.2rem;}
+    .footer_div { margin-top: 0;}
+    .title {font-size: 3rem; margin-bottom: 0;}
+    .time { font-size: 6rem; width: auto;}
+    .pomo_study_min, .pomo_study_sec, .pomo_break_min, .pomo_break_sec {font-size: 6rem; height: auto;}
+    .countdown_min, .countdown_sec {margin-bottom: 2rem;}
+    .countdown_timer {height: 80px; margin: 1.2rem; width: 300px;}
+    .pomodoro_study, .pomodoro_break {height: 100px; width: 300px; margin-bottom: 0.5rem;}
+    .dropdown_option { margin-bottom: 1rem; height: 50px; width: 200px; font-size: 1.5rem;}
+    .pomodoro_title, .cycle { font-size: 1.5rem;}
+    .button_timer { font-size: 1rem; height: 40px; margin-top: 0.6rem;}
+    .pomodoro { gap: 4.5rem;}
+    .dropdown_repeat {margin-top: 2rem;}
+    .goal_display {gap: 7rem;}
+    .goal_display button { width: 110px; height: 40px; border-radius: 1rem;}
+    .set_goal a {font-size: 1.1rem;}
+    .setgoal_form { margin-top: 0; width: 42%; height: auto; gap: 1.5rem; margin-bottom: 0;}
+    .setgoal_subheading { font-size: 1.2rem;}
+    .setgoal_title {font-size: 2.3rem;}
+    .setgoal_input {height: 50px; width: 60%; border-radius: 1.4rem; margin-bottom: 0;}
+    .setgoal_button {width: 30%; font-size: 1.2rem; height: 43px; border-radius: 1.5rem;}
+    .form { width: 50%; gap: 1rem; padding: 1.4rem; height: 60%;}
+    .form_title {font-size: 2rem; margin-bottom: 0;} 
+    .form input {width: 60%; height: 45px; border-radius: 1.5rem;}
+    .login_register {width: 60%;}
+    button {width: 30%; height: 46px; border-radius: 1.4rem;}
+}
+
+
+
+
+

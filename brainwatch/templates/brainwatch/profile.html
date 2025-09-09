@@ -1,0 +1,111 @@
+{% extends "brainwatch/layout.html" %}
+
+{% block body %}
+    <div class="profile_body">
+        <div class="profile_display">
+            <h1 class="profile_name">{{request.user}}</h1>
+            <div class="goal">
+                    <div class="set_goal">
+                        {% if goal != "none"%}
+                            <p class="profile_title">Goal:</p>
+                            <div class="goal_display">
+                                <p class="profile_content">{{goal}} hours daily </p>
+                                <button><a href="{% url 'editgoal' request.user.id %}">Edit goal</a></button>
+                            </div>
+                        {% else %}         
+                            <div class="set_goal">
+                                <p class="profile_title"> Goal: </p>
+                                <div class="goal_display"> 
+                                    <p class="profile_content">Not set </p>
+                                    <button><a href="{% url 'setgoal' request.user.id %}">Set goal </a></button>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if daily_dict %}
+                            {% if daily_dict.stats_daily.percentage %}
+                                <div class="full_bar">
+                                    <div class="progress" style="width: {{daily_dict.stats_daily.percentage}}%"></div>
+                                </div>
+                            {% else %}
+                                <div class="full_bar"></div>
+                            {% endif %}
+                            <p class="profile_title">Today's Study:</p>
+                            <p class="profile_content">{{daily_dict.stats_daily.hour}}h {{daily_dict.stats_daily.minute}}m</p>
+                        {% else %}
+                            <div class="full_bar"></div>
+                            <p class="profile_title">Today's Study:</p>
+                            <p class="profile_content">0h 0m</p>
+                        {% endif %}
+
+                        {% if weekly_dict %}
+                            <p class="profile_title">This week:</p>
+                            <p class="profile_content">{{weekly_dict.stats_weekly.weekly_hour}}h {{weekly_dict.stats_weekly.weekly_minute}}m</p>
+                        {% else %}
+                            <p class="profile_title">This week:</p>
+                            <p class="profile_content">0h 0m</p>
+                        {% endif %}
+                        {% if streak %}
+                            <p class="profile_title">Streak:</p>
+                            <p class="profile_content">{{streak}} days</p>
+                        {% else %}
+                            <p class="profile_title">Streak:</p>
+                            <p class="profile_content">0 day</p>
+                        {% endif %}
+                    </div>
+                    <div class="chart_container">
+                        <canvas class="donut_chart"> </canvas>
+                    </div>
+            </div>
+        </div>
+    
+        <footer>
+            <a class="to_index" href="{% url 'index' %}">Back to clock</a>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+        
+    <script>
+        const timerClock = {{timer}};
+        const countdownClock = {{countdown}};
+        const pomodoroClock = {{pomodoro}};
+        console.log(timerClock, countdownClock, pomodoroClock);
+        
+        /* calculate total hours of three clock */
+        const total = timerClock + countdownClock + pomodoroClock; 
+
+        const chartElement = document.querySelector(".donut_chart").getContext("2d");
+
+        if (total === 0)
+        {
+          new Chart(chartElement, {
+            type: "doughnut", 
+            data: {
+              labels: ["No data to display"], 
+              datasets: [{
+                data: [1], 
+                backgroundColor: ["#e2e8f0"], 
+                borderWidth: 0, 
+                cutout: "60%", 
+              }]
+            }
+          });
+        }
+
+        else 
+        {
+          new Chart(chartElement, {
+            type: "doughnut", 
+            data: {
+              labels: ["Timer", "Countdown", "Pomodoro"], 
+              datasets: [{
+                data: [timerClock, countdownClock, pomodoroClock], 
+                backgroundColor: ["#6366F1", "#EC4899", "#14B8A6"], 
+                borderWidth: 0, 
+                cutout: "60%",
+              }]
+            }
+          });
+        }
+    </script> 
+{% endblock %}
