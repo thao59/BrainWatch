@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-!ko*40-3wft^x=0@+p=xo4a_#o@bewhnz8+6l$3fmc4zhq8r%j
 DEBUG = False
 
 ALLOWED_HOSTS = ['brainwatch-production.up.railway.app', 'localhost', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://brainwatch-production.up.railway.app/']
 
 
 # Application definition
