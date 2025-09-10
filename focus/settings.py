@@ -28,7 +28,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['brainwatch-production.up.railway.app', 'localhost', '127.0.0.1']
 CSRF_TRUSTED_ORIGINS = ['https://brainwatch-production.up.railway.app']
-
+CSRF_COOKIE_SECURE = True 
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True 
 
 # Application definition
 
