@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-!ko*40-3wft^x=0@+p=xo4a_#o@bewhnz8+6l$3fmc4zhq8r%j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['brainwatch-production.up.railway.app', 'localhost', '127.0.0.1']
 
