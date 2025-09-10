@@ -1,1 +1,1 @@
-web: python manage.py collectstatic --noinput && python manage.py migrate && gunicorn focus.wsgi --bind 0.0.0.0:\$PORT
+web: python manage.py check --deploy && gunicorn brainwatch.wsgi --log-file -
