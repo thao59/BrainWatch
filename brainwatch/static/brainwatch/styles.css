@@ -848,7 +848,7 @@ body.darkmode .profile_content
     .clock {width: 80%; max-height: 360px; border-radius: 1.5rem; min-width: 280px; box-shadow: 8px 8px 5px rgba(140, 160, 140, 0.4), -8px -8px 5px rgba(220, 240, 220, 0.8);}
     .block_body {width: 100%;}
     .bodytheme_toggle {width: 50px;} 
-    .btn-secondary { left: 1%;}
+    .header_menu {gap: 45%;}
     .title {font-size: 1.7rem; margin: 0.5rem;}
     .time {font-size: 3rem; padding: 0; width: 200px; height: 50%;}
     .dropdown_option {margin: 0.5rem;}
@@ -885,7 +885,8 @@ body.darkmode .profile_content
 @media (max-width: 767px) and (min-width: 501px)
 {
     .clock {width: 80%; max-height: 360px; border-radius: 1.5rem; min-width: 280px; box-shadow: 8px 8px 5px rgba(140, 160, 140, 0.4), -8px -8px 5px rgba(220, 240, 220, 0.8);}
-    .block_body {width: 70%;}
+    .block_body {width: 100%;}
+    .header_menu {gap: 54%;}
     .btn-secondary {left: 2%;}
     .title {font-size: 1.7rem; margin: 0.5rem;}
     .time {font-size: 3rem; padding: 0; width: 200px; height: 50%;}
@@ -922,7 +923,8 @@ body.darkmode .profile_content
 
 @media (max-width: 991px) and (min-width: 768px) {
     .clock {width: 77%; max-height: 60%; border-radius: 1.5rem; min-width: 280px; box-shadow: 8px 8px 5px rgba(140, 160, 140, 0.4), -8px -8px 5px rgba(220, 240, 220, 0.8); gap: 0.4rem;}
-    .block_body {width: 300px; position: relative;}
+    .block_body {width: 100%; position: relative;}
+    .header_menu {gap: 67%;}
     .btn-secondary {left: 3%; font-size: 1.4rem; height: 50px; width: 130px;}
     .title {font-size: 3.6rem; margin-bottom: 0;}
     .time {font-size: 6rem; padding: 1rem; width: auto;}
@@ -964,7 +966,8 @@ body.darkmode .profile_content
 @media (max-width: 1100px) and (min-width: 992px) {
     .clock {width: 75%; border-radius: 4rem; gap: 1rem; max-height: 580px;}
     .bodytheme_toggle {width: 110px;} 
-    .btn-secondary {left: 3%; top: 3%; font-size: 1.4rem; height: 50px; width: 140px;}
+    .header_menu {gap: 66%;}
+    .btn-secondary {height: 50px; width: 140px;}
     .setgoal_block {margin-top: 10rem;}
     .profile_display { padding: 2rem; margin-top: 15rem; width: 80%; margin-left: 6rem;}
     .profile_name {font-size: 3rem;}
@@ -1004,7 +1007,8 @@ body.darkmode .profile_content
 @media (min-width: 1101px) {
     .clock {min-width: 40%; max-width: 60%; border-radius: 4rem; gap: 1rem; max-height: 580px; padding: 1rem;}
     .bodytheme_toggle {width: 110px;} 
-    .btn-secondary {left: 4%; top: 3%; font-size: 1.4rem; height: 50px; width: 140px;}
+    .header_menu {gap: 66%;}
+    .btn-secondary {font-size: 1.4rem; height: 50px; width: 140px;}
     .setgoal_block {margin-top: 10rem;}
     .profile_display {height: auto; padding: 2rem; margin-top: 12rem; width: 62%; margin-left: auto; margin-right: auto;}
     .profile_name {font-size: 2rem;}
