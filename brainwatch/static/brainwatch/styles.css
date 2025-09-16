@@ -832,7 +832,7 @@ body.darkmode .profile_content
     .clock {width: 80%; max-height: 360px; border-radius: 1.5rem; min-width: 280px; box-shadow: 8px 8px 5px rgba(140, 160, 140, 0.4), -8px -8px 5px rgba(220, 240, 220, 0.8);}
     .block_body {width: 300px; position: relative;}
     .bodytheme_toggle { position: absolute; right: 1%; top: -0.5%; width: 50px;} 
-    .btn-secondary { position: absolute; left: 3%;}
+    .btn-secondary {position: fixed; left: 1%;}
     .title {font-size: 1.7rem; margin: 0.5rem;}
     .time {font-size: 3rem; padding: 0; width: 200px; height: 50%;}
     .dropdown_option {margin: 0.5rem;}
@@ -871,7 +871,7 @@ body.darkmode .profile_content
     .clock {width: 80%; max-height: 360px; border-radius: 1.5rem; min-width: 280px; box-shadow: 8px 8px 5px rgba(140, 160, 140, 0.4), -8px -8px 5px rgba(220, 240, 220, 0.8);}
     .block_body {width: 300px; position: relative;}
     .bodytheme_toggle { position: absolute; right: 1%; top: -0.5%;} 
-    .btn-secondary { position: absolute; left: 3%;}
+    .btn-secondary { position: fixed; left: 2%;}
     .title {font-size: 1.7rem; margin: 0.5rem;}
     .time {font-size: 3rem; padding: 0; width: 200px; height: 50%;}
     .dropdown_option {margin: 0.7rem;}
@@ -909,7 +909,7 @@ body.darkmode .profile_content
     .clock {width: 77%; max-height: 60%; border-radius: 1.5rem; min-width: 280px; box-shadow: 8px 8px 5px rgba(140, 160, 140, 0.4), -8px -8px 5px rgba(220, 240, 220, 0.8); gap: 0.4rem;}
     .block_body {width: 300px; position: relative;}
     .bodytheme_toggle { position: absolute; right: 1%; top: 0;} 
-    .btn-secondary { position: absolute; left: 50%; font-size: 1.4rem; height: 50px; width: 130px;}
+    .btn-secondary { position: fixed; left: 3%; font-size: 1.4rem; height: 50px; width: 130px;}
     .title {font-size: 3.6rem; margin-bottom: 0;}
     .time {font-size: 6rem; padding: 1rem; width: auto;}
     .dropdown_option {margin: 1.3rem; height: 50px; width: 200px; border-radius: 1.4rem; font-size: 1.4rem;}
@@ -950,7 +950,7 @@ body.darkmode .profile_content
 @media (max-width: 1100px) and (min-width: 992px) {
     .clock {width: 75%; border-radius: 4rem; gap: 1rem; max-height: 580px;}
     .bodytheme_toggle { position: absolute; right: 1%; top: 2%; width: 110px;} 
-    .btn-secondary { position: absolute; left: 6%; top: 3%; font-size: 1.4rem; height: 50px; width: 140px;}
+    .btn-secondary { position: fixed; left: 3%; top: 3%; font-size: 1.4rem; height: 50px; width: 140px;}
     .setgoal_block {margin-top: 10rem;}
     .profile_display { padding: 2rem; margin-top: 15rem; width: 80%; margin-left: 6rem;}
     .profile_name {font-size: 3rem;}
@@ -990,7 +990,7 @@ body.darkmode .profile_content
 @media (min-width: 1101px) {
     .clock {min-width: 40%; max-width: 60%; border-radius: 4rem; gap: 1rem; max-height: 580px; padding: 1rem;}
     .bodytheme_toggle { position: absolute; right: 1%; top: 2%; width: 110px;} 
-    .btn-secondary { position: absolute; left: 6%; top: 3%; font-size: 1.4rem; height: 50px; width: 140px;}
+    .btn-secondary { position: fixed; left: 4%; top: 3%; font-size: 1.4rem; height: 50px; width: 140px;}
     .setgoal_block {margin-top: 10rem;}
     .profile_display {height: auto; padding: 2rem; margin-top: 12rem; width: 62%; margin-left: auto; margin-right: auto;}
     .profile_name {font-size: 2rem;}
