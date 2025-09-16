@@ -1005,9 +1005,9 @@ body.darkmode .profile_content
 
 
 @media (min-width: 1101px) {
-    .clock {min-width: 40%; max-width: 60%; border-radius: 4rem; gap: 1rem; max-height: 580px; padding: 1rem;}
+    .clock {min-width: 50%; max-width: 60%; border-radius: 4rem; gap: 1rem; max-height: 580px; padding: 1rem;}
     .bodytheme_toggle {width: 110px;} 
-    .header_menu {gap: 66%;}
+    .header_menu {gap: 80%;}
     .btn-secondary {font-size: 1.4rem; height: 50px; width: 140px;}
     .setgoal_block {margin-top: 10rem;}
     .profile_display {height: auto; padding: 2rem; margin-top: 12rem; width: 62%; margin-left: auto; margin-right: auto;}
