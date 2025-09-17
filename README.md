@@ -16,4 +16,6 @@ To access their profile for statistics, they can click on the same Menu bar in t
 To adjust between dark/light mode, users can click the button in the top right corner. This is especially useful for someone studying late at night who wants to create a comfortable environment for their late-night sessions.
 
 Additional Information:
-The website only requires the installation of Django and should run perfectly.
+The website requires the installation of Django and whitenoise and should run perfectly.
+
+Live demo: https://brainwatch-production.up.railway.app/
