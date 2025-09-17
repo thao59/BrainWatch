@@ -869,6 +869,7 @@ body.darkmode .profile_content
     .goal {flex-direction: column; gap: 1rem;}
     .set_goal {flex: 1;}
     .setgoal_form { font-size: 1.3rem; width: 80%; text-align: center; margin-top: 8rem;}
+    .setgoal_input {height: 35px; width: 100%; border-radius: 1.4rem; margin-bottom: 0;}
     .goal_display button {width: 70px; height: 30px;}
     .form { width: 80%;}
     .form_title {font-size: 1.4rem;}
@@ -913,6 +914,7 @@ body.darkmode .profile_content
     .full_bar {width: 87%;}
     .set_goal {gap: 0.4rem;}
     .setgoal_form { font-size: 1.3rem; width: 80%; text-align: center; margin-top: 8rem;}
+    .setgoal_input {height: 40px; width: 100%; border-radius: 1.4rem; margin-bottom: 0;}
     .form { width: 70%;}
     .form input {width: 70%;}
     .login_register {width: 70%;}
@@ -950,7 +952,7 @@ body.darkmode .profile_content
     .setgoal_form { font-size: 1.7rem; width: 80%; text-align: center; margin-top: 5rem; height: 40%;}
     .setgoal_form a, .setgoal_subheading { font-size: 1.3rem;}
     .setgoal_title {font-size: 2.3rem;}
-    .setgoal_input {height: 50px; width: 60%; border-radius: 1.4rem; margin-bottom: 0;}
+    .setgoal_input {height: 50px; width: 80%; border-radius: 1.4rem; margin-bottom: 0;}
     .setgoal_button {width: 30%; font-size: 1.2rem; height: 43px; border-radius: 1.5rem;}
     .form { width: 70%; gap: 1.3rem;}
     .form_title {font-size: 2.6rem;} 
