@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 }
                     
                 //set flag as false as default
-                let resetFlag = false; 
+                resetFlag = false; 
                     
                 resetButton.onclick = () => {
                     reset();            
@@ -710,13 +710,13 @@ document.addEventListener("DOMContentLoaded", function(){
 
     //create function for reset button 
     function reset(){
+        console.log("reset button is clicked ");
         if (resetFlag === false)
             {            
                 //stop timer and clear out second and minute
                 clearInterval(id);
                 second = 0;
                 minute = 0;
-
 
                 if (timeDisplay.style.display === "")
                 {
@@ -740,6 +740,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
                 //set reset as true 
                 resetFlag = true;
+                console.log("reset flag: ", resetFlag);
             
                 //switch reset button as start button
                 resetButton.textContent = "▶";
@@ -775,6 +776,7 @@ document.addEventListener("DOMContentLoaded", function(){
             
                 //set reset as false 
                 resetFlag = false;
+                console.log("reset flag: ", resetFlag);
             }
     }
     }
