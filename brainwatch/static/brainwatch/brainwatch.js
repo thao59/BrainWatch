@@ -6,60 +6,94 @@ window.addEventListener("error", function(e)
     console.log("error line:", e.lineno);
 })
 
+let second;
+let minute;
+let display;
+let id;
+let timePause;
+let resetFlag;
+let org_sec;
+let org_min;
+let org_break_sec;
+let org_break_min;
+let pomo_break_sec;
+let pomo_break_min; 
+let createOption;
+let count;
+let total_seconds;
+let total_org_seconds;
+let theme;
+let theme_switch;
+let pomoStudyRunning;
+let pomoBreakRunning;
+let dropdownButton;
+let timeDisplay;
+let startButton;
+let countdownClock;
+let input_sec;
+let input_min;
+let buttonContainer;
+let pauseButton;
+let stopButton;
+let resetButton;
+let clockMode;
+let pomoClock;
+let pomoStudyMin;
+let pomoStudySec;
+let pomoBreakMin;
+let pomoBreakSec;
+let repeat;
+let dropdownRepeat;
+let moonIcon;
+let sunIcon;
+let modeButton;
+let body;
+let clock;
+let time_start;
+let timePause_start;
+let timePause_end;
+let breakTimer_start;
+let breakTimerPause_start;
+let breakTimerPause_end;
+
+
+
 document.addEventListener("DOMContentLoaded", function(){
 
-    const dropdownButton = document.querySelector(".dropdown_option");
-    const timeDisplay = document.querySelector(".time");
-    const startButton = document.getElementById("start_button");
-    const countdownClock = document.querySelector(".countdown_timer");
-    const input_sec = document.querySelector(".countdown_sec");
-    const input_min = document.querySelector(".countdown_min"); 
-    const buttonContainer = document.querySelector(".button_container");
-    const pauseButton = document.getElementById("pause_button"); 
-    const stopButton = document.getElementById("stop_button");
-    const resetButton = document.getElementById("reset_button");
-    const clockMode = document.querySelector(".title");
-    const pomoClock = document.querySelector(".pomodoro");
-    const pomoStudyMin = document.querySelector(".pomo_study_min");
-    const pomoStudySec = document.querySelector(".pomo_study_sec");
-    const pomoBreakMin = document.querySelector(".pomo_break_min");
-    const pomoBreakSec = document.querySelector(".pomo_break_sec"); 
-    const repeat = document.getElementById("repeat_qty"); 
-    const dropdownRepeat = document.querySelector(".dropdown_repeat");
-    const moonIcon = document.querySelector(".moon_icon");
-    const sunIcon = document.querySelector(".sun_icon");
-    const modeButton = document.querySelector(".bodytheme_toggle");
-    const body = document.body;
-    const clock = document.querySelector(".clock");
+    dropdownButton = document.querySelector(".dropdown_option");
+    timeDisplay = document.querySelector(".time");
+    startButton = document.getElementById("start_button");
+    countdownClock = document.querySelector(".countdown_timer");
+    input_sec = document.querySelector(".countdown_sec");
+    input_min = document.querySelector(".countdown_min"); 
+    buttonContainer = document.querySelector(".button_container");
+    pauseButton = document.getElementById("pause_button"); 
+    stopButton = document.getElementById("stop_button");
+    resetButton = document.getElementById("reset_button");
+    clockMode = document.querySelector(".title");
+    pomoClock = document.querySelector(".pomodoro");
+    pomoStudyMin = document.querySelector(".pomo_study_min");
+    pomoStudySec = document.querySelector(".pomo_study_sec");
+    pomoBreakMin = document.querySelector(".pomo_break_min");
+    pomoBreakSec = document.querySelector(".pomo_break_sec"); 
+    repeat = document.getElementById("repeat_qty"); 
+    dropdownRepeat = document.querySelector(".dropdown_repeat");
+    moonIcon = document.querySelector(".moon_icon");
+    sunIcon = document.querySelector(".sun_icon");
+    modeButton = document.querySelector(".bodytheme_toggle");
+    body = document.body;
+    clock = document.querySelector(".clock");
 
-    
-    let second;
-    let minute;
-    let display;
-    let id;
-    let timePause;
-    let resetFlag;
-    let org_sec;
-    let org_min;
-    let org_break_sec;
-    let org_break_min;
-    let pomo_break_sec;
-    let pomo_break_min; 
-    let createOption;
-    let count;
-    let total_seconds;
-    let total_org_seconds;
-    let selection;
-    let theme;
 
     //get theme from localstorage 
     theme = localStorage.getItem("theme");
     console.log(theme);
 
-    if (theme === "false")
+    if (theme === "light" || theme === null)
     {
+        
         body.classList.remove("darkmode");
-        selection = false;
+        theme_switch = "light";
         moonIcon.style.display = "none";
         sunIcon.style.display = "";
     }
@@ -67,29 +101,30 @@ document.addEventListener("DOMContentLoaded", function(){
     else
     {
         body.classList.toggle("darkmode");
-        selection = true;
+        theme_switch = "dark";
         sunIcon.style.display = "none";
         moonIcon.style.display = "";
     }
 
     modeButton.onclick = () => {
-        if (selection === true)
+        if (theme_switch === "dark")
         {
             body.classList.remove("darkmode");
-            selection = false;
-            localStorage.setItem("theme", selection);
+            theme_switch = "light";
+            localStorage.setItem("theme", theme_switch);
+            console.log(localStorage.getItem("theme"));
             moonIcon.style.display = "none";
             sunIcon.style.display ="";
-            console.log(localStorage.setItem("theme", selection));
         }
 
         else
         {
-            selection = body.classList.toggle("darkmode");
-            localStorage.setItem("theme", selection);
+            body.classList.toggle("darkmode");
+            theme_switch = "dark";
+            localStorage.setItem("theme", theme_switch);
+            console.log(localStorage.getItem("theme"));
             sunIcon.style.display = "none";
             moonIcon.style.display = "";
-            console.log(selection);
         }
     }
 
@@ -401,6 +436,13 @@ document.addEventListener("DOMContentLoaded", function(){
 
     //create function for timer 
     function setTimer (){
+        
+        //set start time only at the beginning 
+        if (!timePause_start)
+        {
+            time_start = Date.now();
+        }
+
         id = setInterval(() => {
             second += 1;
             if (second === 60)
@@ -415,7 +457,14 @@ document.addEventListener("DOMContentLoaded", function(){
 
     //create countdown timer 
     function setCountdown(){
-        id = setInterval(() => {     
+                    
+            //set start time only at the beginning 
+            if (!timePause_start)
+            {
+                time_start = Date.now(); 
+            }
+ 
+        id = setInterval(() => {      
             if (second === 0)
                 {
                     minute -= 1; 
@@ -452,8 +501,8 @@ document.addEventListener("DOMContentLoaded", function(){
                                               type: "countdown",
                         })
                     })
-                    .then(response => response.json)
-                    .then (data => console.log(data.message, data.id))
+                    .then(response => response.json())
+                    .then (data => console.log(data.message, data.id));
                             }
                     }, 1000)
     }
@@ -466,14 +515,32 @@ document.addEventListener("DOMContentLoaded", function(){
         //create a function for study
         function startStudy()
         {
+            //set start time only at the beginning 
+            if (!timePause_start)
+            {
+                time_start = Date.now();
+            }
+
+            //set pomoBreakRunning = false and pomoStudyRunning = true when study timer is running
+            pomoStudyRunning = true;
+            pomoBreakRunning = false;
             
             if (count === 0)
             {
                 alert("Pomodoro cycle finished!");
 
+                //stop interval 
+                clearInterval(id);
+
                 //display start button and hide other buttons 
                 buttonContainer.style.display = "none";
                 startButton.style.display = ""; 
+
+                //enable inputs 
+                pomoStudyMin.disabled = false;
+                pomoStudySec.disabled = false;
+                pomoBreakMin.disabled = false;
+                pomoBreakSec.disabled = false;
 
                 //calculate results after the timer is finished 
                 total_seconds = (org_min * 60) + org_sec;
@@ -487,7 +554,7 @@ document.addEventListener("DOMContentLoaded", function(){
                     })
                 })
                 .then(response => response.json())
-                .then(data => console.log(data.message, data.id))
+                .then(data => console.log(data.message, data.id));
                 return;
             }
 
@@ -523,6 +590,17 @@ document.addEventListener("DOMContentLoaded", function(){
 
         function startBreak()
         {
+            
+            //set pomoBreakRunning = true and pomoStudyRunning = false when break timer is running
+            pomoBreakRunning = true;
+            pomoStudyRunning = false;
+            
+            //set break start time only at the beginning 
+            if (!breakTimerPause_start)
+            {
+                breakTimer_start = Date.now();
+            }
+           
             //start break interval
             id = setInterval(() => {
                 if (pomo_break_sec === 0 && pomo_break_min !== 0)
@@ -559,8 +637,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
                     else 
                     { 
-                        alert("Pomodoro cycle finished!");
-                        return;
+                        startStudy();
                     }
                 }
             }, 1000)
@@ -582,17 +659,33 @@ document.addEventListener("DOMContentLoaded", function(){
             //display the paused time according to different modes 
             if (timeDisplay.style.display === "")
             {
+                //set the start of paused time 
+                timePause_start = Date.now();
                 timeDisplay.textContent = display;
             }
             
             else if (countdownClock.style.display === "")
             {
+                //set the start of paused time 
+                timePause_start = Date.now();
                 input_sec.value = `${String(second).padStart(2, '0')}`;
                 input_min.value = `${String(minute).padStart(2, '0')}`;
             }
 
             else 
             {
+                if (pomoStudyRunning === true)
+                {
+                    //set the start of paused time 
+                    timePause_start = Date.now();
+                } 
+
+                if (pomoBreakRunning === true)
+                {
+                    //set the start of paused time for break timer
+                    breakTimerPause_start = Date.now();
+                }
+
                 pomoStudyMin.value = `${String(minute).padStart(2, '0')}`;
                 pomoStudySec.value = `${String(second).padStart(2, '0')}`;
                 pomoBreakMin.value = `${String(pomo_break_min).padStart(2, '0')}`;
@@ -610,16 +703,33 @@ document.addEventListener("DOMContentLoaded", function(){
 
             if (timeDisplay.style.display === "")
             {
+                //set the end of paused time 
+                timePause_end = Date.now();
+
                 setTimer();
             }
 
             else if (countdownClock.style.display === "")
             {
+                //set the end of paused time 
+                timePause_end = Date.now();
+                
                 setCountdown();
             }
 
             else 
             {
+                //if study timer is running, set the end of paused time for study timer 
+                if (pomoStudyRunning === true)
+                {
+                    timePause_end = Date.now();
+                }
+
+                //if break timer is running, set the end of paused time for break timer 
+                if (pomoBreakRunning === true)
+                {
+                    breakTimerPause_end = Date.now();
+                }
                 pomo();
             }
                                         
@@ -669,6 +779,10 @@ document.addEventListener("DOMContentLoaded", function(){
 
             input_sec.value = `${String(second).padStart(2, '0')}`;
             input_min.value = `${String(minute).padStart(2, '0')}`;
+
+            //enable inputs 
+            input_min.disabled = false;
+            input_sec.disabled = false;
         }
 
         else 
@@ -690,6 +804,12 @@ document.addEventListener("DOMContentLoaded", function(){
             pomoStudySec.value = `${String(second).padStart(2, '0')}`;
             pomoBreakMin.value = `${String(pomo_break_min).padStart(2, '0')}`;
             pomoBreakSec.value = `${String(pomo_break_sec).padStart(2, '0')}`;
+
+            //enable inputs 
+            pomoStudyMin.disabled = false;
+            pomoStudySec.disabled = false;
+            pomoBreakMin.disabled = false;
+            pomoBreakSec.disabled = false;
         }
                                 
         //hide all buttons and display start button
@@ -705,12 +825,11 @@ document.addEventListener("DOMContentLoaded", function(){
             })
         })
         .then(response => response.json())
-        .then(data => console.log(data.message, data.id))
+        .then(data => console.log(data.message, data.id));
     }
 
     //create function for reset button 
     function reset(){
-        console.log("reset button is clicked ");
         if (resetFlag === false)
             {            
                 //stop timer and clear out second and minute
@@ -749,6 +868,9 @@ document.addEventListener("DOMContentLoaded", function(){
             //if reset button is clicked for the second time
         else 
             {
+                //reset start time
+                time_start = Date.now();
+                
                 //switch start button as reset button 
                 resetButton.textContent = "↺"; 
             
@@ -779,6 +901,102 @@ document.addEventListener("DOMContentLoaded", function(){
                 console.log("reset flag: ", resetFlag);
             }
     }
+    }
+}); 
+
+
+//create a function to recalculate the clock whenever the tab is not hidden 
+document.addEventListener("visibilitychange", function(){
+    let time_now = Date.now(), elapsed;
+    if (!document.hidden)
+    { 
+        if (timeDisplay.style.display === "")
+        {
+            //if the timer has been paused, calculate the paused time to elapsed time
+            if ((timePause_start) && (timePause_end))
+            {
+                elapsed = time_now - time_start - (timePause_end - timePause_start);
+            }
+            
+            else 
+            {
+                elapsed = time_now - time_start;
+            }
+
+            minute = Math.floor(elapsed / 60000); 
+            second = Math.floor((elapsed % 60000) / 1000);
+
+            display = `${String(minute).padStart(2, '0')}:${String(second).padStart(2, '0')}`;
+            timeDisplay.textContent = display;
+
+        }
+
+        else if (countdownClock.style.display === "")
+        {
+            //if timer has been paused, calculate the paused time to elapsed time 
+            if ((timePause_start) && (timePause_end))
+            {
+                elapsed = (time_start + org_sec*1000 + org_min*60000 + (timePause_end - timePause_start)) - time_now;
+            }
+
+            else 
+            {
+                elapsed = (time_start + org_sec*1000 + org_min*60000) - time_now;
+            }
+
+            minute = Math.floor(elapsed/60000);
+            second = Math.floor((elapsed % 60000) /1000);
+
+            input_sec.value = `${String(second).padStart(2, '0')}`;
+            input_min.value = `${String(minute).padStart(2, '0')}`;
+        }
+        else 
+        {
+            //if pomoStudy is running 
+            if (pomoStudyRunning === true)
+            {
+                //if timer has been paused, calculate the paused time to elapsed time 
+                if ((timePause_start) && (timePause_end))
+                {
+                    elapsed =  (time_start + org_sec*1000 + org_min*60000 + (timePause_end - timePause_start)) - time_now;
+                }
+                
+                else
+                {
+                    elapsed = (time_start + org_sec*1000 + org_min*60000) - time_now;
+                }
+                
+                minute = Math.floor(elapsed / 60000);
+                second = Math.floor((elapsed % 60000) /1000);
+
+                pomoStudyMin.value = `${String(minute).padStart(2, '0')}`;
+                pomoStudySec.value = `${String(second).padStart(2, '0')}`;
+                pomoBreakMin.value = `${String(org_break_min).padStart(2, '0')}`;
+                pomoBreakSec.value = `${String(org_break_sec).padStart(2, '0')}`;
+            }
+
+            //if pomoBreak is running
+            if (pomoBreakRunning === true)
+            {
+
+                if ((breakTimerPause_start) && (breakTimerPause_end))
+                {
+                    elapsed = (breakTimer_start + org_break_sec*1000 + org_break_min*60000 + (breakTimerPause_end - breakTimerPause_start)) - time_now ;
+                }
+                
+                else 
+                {
+                    elapsed = (breakTimer_start + org_break_sec*1000 + org_break_min*60000) - time_now ;
+                }
+                pomo_break_min = Math.floor(elapsed / 60000);
+                pomo_break_sec = Math.floor((elapsed % 60000) /1000);
+
+                pomoStudyMin.value = `${String(org_min).padStart(2, '0')}`;
+                pomoStudySec.value = `${String(org_sec).padStart(2, '0')}`;
+                pomoBreakMin.value = `${String(pomo_break_min).padStart(2, '0')}`;
+                pomoBreakSec.value = `${String(pomo_break_sec).padStart(2, '0')}`;
+            }
+        }
     }
 }); 
 

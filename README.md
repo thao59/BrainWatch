@@ -2,13 +2,11 @@
 
 > A distraction-free study timer with analytics to help students optimize their focus sessions
 
-🔗 **[Live Demo](https://brainwatch-production.up.railway.app/)** | 📹 **[Video Walkthrough](#)** (optional)
-
-![BrainWatch Screenshot](screenshot.png) <!-- Add a nice screenshot -->
+Live Demo (https://brainwatch-production.up.railway.app/) 
 
 ---
 
-## 📌 The Problem
+The Problem
 
 As a student, I struggled to find a study timer that:
 - ✅ Tracked actual study time (not just intentions)
@@ -19,10 +17,9 @@ As a student, I struggled to find a study timer that:
 Existing apps either bombarded me with ads or locked essential features behind subscriptions.
 
 ---
+The Solution
 
-## 💡 The Solution
-
-BrainWatch is a **full-stack web application** that tracks study sessions and provides data-driven insights to help users understand their productivity patterns.
+BrainWatch is a full-stack web application that tracks study sessions and provides data-driven insights to help users understand their productivity patterns.
 
 ### Key Features
 - **3 Timer Modes**: Pomodoro (25/5), Countdown, and Stopwatch
@@ -54,8 +51,6 @@ BrainWatch is a **full-stack web application** that tracks study sessions and pr
 
 ---
 
-## 🏗️ Architecture
-
 ### Database Models
 ```python
 User          # Django authentication
@@ -63,17 +58,3 @@ Profile       # Study sessions with timer type tracking
 Goal          # Daily study targets
 Streak        # Consecutive day completion tracking
 
-
-🎯 Challenges & Solutions
-Challenge 1: Real-time Data Sync Without Page Reloads
-Problem: Users would lose timer data if they accidentally refreshed
-Solution: Implemented AJAX endpoints for auto-saving sessions every minute
-Impact: Zero data loss, improved user experience
-Challenge 2: Accurate Streak Calculation Across Timezones
-Problem: Streak logic broke for users studying past midnight
-Solution: Used Django's timezone-aware queries with proper date boundaries
-Impact: Reliable streak tracking regardless of study time
-Challenge 3: Performance with Growing Session History
-Problem: Profile page slowed down with 100+ sessions
-Solution: Added database indexing and optimized queries with .select_related()
-Impact: Page load time reduced from 2.3s to 0.4s
