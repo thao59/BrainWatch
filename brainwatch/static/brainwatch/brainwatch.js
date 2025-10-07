@@ -55,6 +55,9 @@ let timePause_end;
 let breakTimer_start;
 let breakTimerPause_start;
 let breakTimerPause_end;
+let totalPausedTime = 0;
+let totalPausedBreakTime = 0;
+let isStop;
 
 
 
@@ -182,7 +185,14 @@ document.addEventListener("DOMContentLoaded", function(){
                 startButton.style.display = "";
                 buttonContainer.style.display = "none";
             }
-            
+
+            //set isStop = false as default 
+            isStop = false;
+
+            //reset all break accumulators 
+            totalPausedTime = 0;
+            totalPausedBreakTime = 0;
+
             //when user clicks the start button, hide it and display pause/stop/reset button 
             startButton.onclick = () => {
                 startButton.style.display = "none";
@@ -192,7 +202,6 @@ document.addEventListener("DOMContentLoaded", function(){
                 
                 //set flag as false as default 
                 timePause = false;
-
                 pauseButton.onclick = () => {
                     pause();
                 }
@@ -248,6 +257,13 @@ document.addEventListener("DOMContentLoaded", function(){
 
             input_sec.value = `${String(second).padStart(2, '0')}`;
             input_min.value = `${String(minute).padStart(2, '0')}`;
+
+            //set isStop = false as default 
+            isStop = false;  
+
+            //reset all break accumulators 
+            totalPausedTime = 0;
+            totalPausedBreakTime = 0;
                         
             //when user click start, hide start button and display other buttons. Start counting down from the given time
             startButton.onclick = () => {
@@ -292,10 +308,9 @@ document.addEventListener("DOMContentLoaded", function(){
                 
                 //set flag as fault as default 
                 timePause = false;
-
                 pauseButton.onclick = () => {
                 pause();}
-
+       
                 stopButton.onclick = () => {
                 stop();}
 
@@ -356,6 +371,13 @@ document.addEventListener("DOMContentLoaded", function(){
             pomoStudySec.value = `${String(second).padStart(2, '0')}`;
             pomoBreakMin.value = `${String(pomo_break_min).padStart(2, '0')}`;
             pomoBreakSec.value = `${String(pomo_break_sec).padStart(2, '0')}`;
+
+            //set isStop = false as default 
+            isStop = false;
+
+            //reset all break accumulators 
+            totalPausedTime = 0;
+            totalPausedBreakTime = 0;
 
             startButton.onclick = () => {
                 //save org inputs for reset function 
@@ -501,7 +523,11 @@ document.addEventListener("DOMContentLoaded", function(){
                                               type: "countdown",
                         })
                     })
-                    .then(response => response.json())
+                    .then(response => {
+                        if(response.redirected)
+                            return null;
+                        return response.json();
+                    })
                     .then (data => console.log(data.message, data.id));
                             }
                     }, 1000)
@@ -553,7 +579,11 @@ document.addEventListener("DOMContentLoaded", function(){
                                           type: "pomodoro"
                     })
                 })
-                .then(response => response.json())
+                .then(response => {
+                    if(response.redirected)
+                        return null;
+                    return response.json();
+                })
                 .then(data => console.log(data.message, data.id));
                 return;
             }
@@ -706,6 +736,9 @@ document.addEventListener("DOMContentLoaded", function(){
                 //set the end of paused time 
                 timePause_end = Date.now();
 
+                //calculate all paused time 
+                totalPausedTime += (timePause_end - timePause_start);
+
                 setTimer();
             }
 
@@ -713,6 +746,9 @@ document.addEventListener("DOMContentLoaded", function(){
             {
                 //set the end of paused time 
                 timePause_end = Date.now();
+
+                //calculate all paused time 
+                totalPausedTime += (timePause_end - timePause_start);
                 
                 setCountdown();
             }
@@ -723,15 +759,25 @@ document.addEventListener("DOMContentLoaded", function(){
                 if (pomoStudyRunning === true)
                 {
                     timePause_end = Date.now();
+                    
+                    //calculate all paused time 
+                    totalPausedTime += (timePause_end - timePause_start);
                 }
 
                 //if break timer is running, set the end of paused time for break timer 
                 if (pomoBreakRunning === true)
                 {
                     breakTimerPause_end = Date.now();
+
+                    //calculate all paused break time for pomodoro break timer
+                    totalPausedBreakTime += (breakTimerPause_end - breakTimerPause_start); 
                 }
                 pomo();
             }
+
+            //reset timePause 
+            timePause_start = null;
+            timePause_end = null;
                                         
             //set flag back to false 
             timePause = false;
@@ -743,7 +789,15 @@ document.addEventListener("DOMContentLoaded", function(){
         //stop timer 
         clearInterval(id); 
 
+        //variable to store clock type to send to backend 
         let clock_type;
+        
+        //set isStop as true 
+        isStop = true;
+
+        //reset break accumulators
+        totalPausedTime = 0;
+        totalPausedBreakTime = 0;
 
         //display times according to modes 
         if (timeDisplay.style.display === "")
@@ -768,6 +822,7 @@ document.addEventListener("DOMContentLoaded", function(){
             
             //calculate total seconds 
             total_org_seconds = (org_min*60) + org_sec; 
+            console.log(`second: ${second}, minute: ${minute}`);
             total_seconds = total_org_seconds - (minute*60 + second);
 
             //assign type to variable 
@@ -824,7 +879,10 @@ document.addEventListener("DOMContentLoaded", function(){
                                   type: clock_type,
             })
         })
-        .then(response => response.json())
+        .then(response => { 
+            if (response.redirected)
+            return null;
+            return response.json();})
         .then(data => console.log(data.message, data.id));
     }
 
@@ -907,94 +965,161 @@ document.addEventListener("DOMContentLoaded", function(){
 
 //create a function to recalculate the clock whenever the tab is not hidden 
 document.addEventListener("visibilitychange", function(){
-    let time_now = Date.now(), elapsed;
+    let time_now = Date.now(), elapsed, status;
     if (!document.hidden)
     { 
-        if (timeDisplay.style.display === "")
+        //if isStop = true, only display clock as 00:00 
+        if (isStop === true)
         {
-            //if the timer has been paused, calculate the paused time to elapsed time
-            if ((timePause_start) && (timePause_end))
+            second = 0; minute = 0;
+            if(timeDisplay.style.display ==="")
             {
-                elapsed = time_now - time_start - (timePause_end - timePause_start);
+                display = `${String(minute).padStart(2, '0')}:${String(second).padStart(2,'0')}`;
+                timeDisplay.textContent = display;
             }
-            
+
+            else if (countdownClock.style.display === "")
+            {
+                input_sec.value = `${String(second).padStart(2, '0')}`;
+                input_min.value = `${String(minute).padStart(2, '0')}`;
+            }
             else 
             {
-                elapsed = time_now - time_start;
+                pomo_break_min = 0, pomo_break_sec = 0;
+                pomoStudyMin.value = `${String(minute).padStart(2, '0')}`;
+                pomoStudySec.value = `${String(second).padStart(2, '0')}`;
+                pomoBreakMin.value = `${String(pomo_break_min).padStart(2, '0')}`;
+                pomoBreakSec.value = `${String(pomo_break_sec).padStart(2, '0')}`;
             }
-
-            minute = Math.floor(elapsed / 60000); 
-            second = Math.floor((elapsed % 60000) / 1000);
-
-            display = `${String(minute).padStart(2, '0')}:${String(second).padStart(2, '0')}`;
-            timeDisplay.textContent = display;
-
         }
 
-        else if (countdownClock.style.display === "")
-        {
-            //if timer has been paused, calculate the paused time to elapsed time 
-            if ((timePause_start) && (timePause_end))
-            {
-                elapsed = (time_start + org_sec*1000 + org_min*60000 + (timePause_end - timePause_start)) - time_now;
-            }
-
-            else 
-            {
-                elapsed = (time_start + org_sec*1000 + org_min*60000) - time_now;
-            }
-
-            minute = Math.floor(elapsed/60000);
-            second = Math.floor((elapsed % 60000) /1000);
-
-            input_sec.value = `${String(second).padStart(2, '0')}`;
-            input_min.value = `${String(minute).padStart(2, '0')}`;
-        }
         else 
         {
-            //if pomoStudy is running 
-            if (pomoStudyRunning === true)
+            if (timeDisplay.style.display === "")
             {
-                //if timer has been paused, calculate the paused time to elapsed time 
-                if ((timePause_start) && (timePause_end))
+                //if the timer has been paused, calculate the paused time to elapsed time
+                if (timePause_start && timePause_end)
                 {
-                    elapsed =  (time_start + org_sec*1000 + org_min*60000 + (timePause_end - timePause_start)) - time_now;
+                    elapsed = time_now - time_start - totalPausedTime;
+                    status = "there's pause start and pause end";
+                    console.log(`pause start: ${timePause_start}, pause end: ${timePause_end}`);
+                    console.log(status);
                 }
                 
-                else
+                //if timer has been paused but not resume yet, just display the time from when the time is paused
+                else if ((timePause_start) && (!timePause_end))
+                {
+    
+                    timeDisplay.textContent = display;
+                    status = "there's only pause start";
+                    console.log(status);
+                    return; 
+                }
+    
+                else 
+                {
+                    elapsed = time_now - time_start;
+                    status = "there's no pause start or end";
+                    console.log(status);
+                }
+    
+                minute = Math.floor(elapsed / 60000); 
+                second = Math.floor((elapsed % 60000) / 1000);
+                console.log(`minute: ${minute} and second: ${second}`);
+    
+                display = `${String(minute).padStart(2, '0')}:${String(second).padStart(2, '0')}`;
+                timeDisplay.textContent = display;
+                console.log(display);
+    
+            }
+    
+            else if (countdownClock.style.display === "")
+            {
+                //if timer has been paused, calculate the paused time to elapsed time 
+                if (timePause_start && timePause_end)
+                {
+                    elapsed = (time_start + org_sec*1000 + org_min*60000 + totalPausedTime) - time_now;
+                }
+    
+                //if timer has been paused but not resume yet, just display the time from when the time is paused
+                else if (timePause_start && !timePause_end)
+                {
+                    input_sec.value = `${String(second).padStart(2, '0')}`;
+                    input_min.value = `${String(minute).padStart(2, '0')}`;
+                    return;
+                }
+    
+                else 
                 {
                     elapsed = (time_start + org_sec*1000 + org_min*60000) - time_now;
                 }
-                
-                minute = Math.floor(elapsed / 60000);
+    
+                minute = Math.floor(elapsed/60000);
                 second = Math.floor((elapsed % 60000) /1000);
-
-                pomoStudyMin.value = `${String(minute).padStart(2, '0')}`;
-                pomoStudySec.value = `${String(second).padStart(2, '0')}`;
-                pomoBreakMin.value = `${String(org_break_min).padStart(2, '0')}`;
-                pomoBreakSec.value = `${String(org_break_sec).padStart(2, '0')}`;
+    
+                input_sec.value = `${String(second).padStart(2, '0')}`;
+                input_min.value = `${String(minute).padStart(2, '0')}`;
             }
-
-            //if pomoBreak is running
-            if (pomoBreakRunning === true)
+            else 
             {
-
-                if ((breakTimerPause_start) && (breakTimerPause_end))
+                //if pomoStudy is running 
+                if (pomoStudyRunning === true)
                 {
-                    elapsed = (breakTimer_start + org_break_sec*1000 + org_break_min*60000 + (breakTimerPause_end - breakTimerPause_start)) - time_now ;
+                    //if timer has been paused, calculate the paused time to elapsed time 
+                    if (totalPausedTime)
+                    {
+                        elapsed =  (time_start + org_sec*1000 + org_min*60000 + (totalPausedTime)) - time_now;
+                    }
+    
+                    else if (timePause_start && !timePause_end)
+                    {
+                        pomoStudyMin.value = `${String(minute).padStart(2, '0')}`;
+                        pomoStudySec.value = `${String(second).padStart(2, '0')}`;
+                        return;
+                    }
+                    
+                    else
+                    {
+                        elapsed = (time_start + org_sec*1000 + org_min*60000) - time_now;
+                    }
+                    
+                    minute = Math.floor(elapsed / 60000);
+                    second = Math.floor((elapsed % 60000) /1000);
+    
+                    pomoStudyMin.value = `${String(minute).padStart(2, '0')}`;
+                    pomoStudySec.value = `${String(second).padStart(2, '0')}`;
+                    pomoBreakMin.value = `${String(org_break_min).padStart(2, '0')}`;
+                    pomoBreakSec.value = `${String(org_break_sec).padStart(2, '0')}`;
                 }
-                
-                else 
+    
+                //if pomoBreak is running
+                if (pomoBreakRunning === true)
                 {
-                    elapsed = (breakTimer_start + org_break_sec*1000 + org_break_min*60000) - time_now ;
+    
+                    if (totalPausedBreakTime)
+                    {
+                        elapsed = (breakTimer_start + org_break_sec*1000 + org_break_min*60000 + totalPausedBreakTime) - time_now ;
+                    }
+    
+                    else if (breakTimerPause_start && !breakTimerPause_end)
+                    {
+                        pomoBreakMin.value = `${String(org_break_min).padStart(2, '0')}`;
+                        pomoBreakSec.value = `${String(org_break_sec).padStart(2, '0')}`;
+                        return;
+                    }
+    
+                    else 
+                    {
+                        elapsed = (breakTimer_start + org_break_sec*1000 + org_break_min*60000) - time_now ;
+                    }
+                    pomo_break_min = Math.floor(elapsed / 60000);
+                    pomo_break_sec = Math.floor((elapsed % 60000) /1000);
+    
+                    pomoStudyMin.value = `${String(org_min).padStart(2, '0')}`;
+                    pomoStudySec.value = `${String(org_sec).padStart(2, '0')}`;
+                    pomoBreakMin.value = `${String(pomo_break_min).padStart(2, '0')}`;
+                    pomoBreakSec.value = `${String(pomo_break_sec).padStart(2, '0')}`;
                 }
-                pomo_break_min = Math.floor(elapsed / 60000);
-                pomo_break_sec = Math.floor((elapsed % 60000) /1000);
-
-                pomoStudyMin.value = `${String(org_min).padStart(2, '0')}`;
-                pomoStudySec.value = `${String(org_sec).padStart(2, '0')}`;
-                pomoBreakMin.value = `${String(pomo_break_min).padStart(2, '0')}`;
-                pomoBreakSec.value = `${String(pomo_break_sec).padStart(2, '0')}`;
             }
         }
     }
