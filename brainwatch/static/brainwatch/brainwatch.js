@@ -685,6 +685,10 @@ document.addEventListener("DOMContentLoaded", function(){
                     
             //clear interval 
             clearInterval(id);
+
+            //reset timePause each time 
+            timePause_start = null;
+            timePause_end = null;
                                     
             //display the paused time according to different modes 
             if (timeDisplay.style.display === "")
@@ -774,10 +778,6 @@ document.addEventListener("DOMContentLoaded", function(){
                 }
                 pomo();
             }
-
-            //reset timePause 
-            timePause_start = null;
-            timePause_end = null;
                                         
             //set flag back to false 
             timePause = false;
