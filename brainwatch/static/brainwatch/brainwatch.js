@@ -966,7 +966,7 @@ document.addEventListener("DOMContentLoaded", function(){
 //create a function to recalculate the clock whenever the tab is not hidden 
 document.addEventListener("visibilitychange", function(){
     let time_now = Date.now(), elapsed, status;
-    if (!document.hidden)
+    if (!document.hidden && time_start)
     { 
         //if isStop = true, only display clock as 00:00 
         if (isStop === true)
