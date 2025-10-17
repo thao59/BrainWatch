@@ -90,7 +90,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
     //get theme from localstorage 
     theme = localStorage.getItem("theme");
-    console.log(theme);
 
     if (theme === "light" || theme === null)
     {
@@ -115,7 +114,6 @@ document.addEventListener("DOMContentLoaded", function(){
             body.classList.remove("darkmode");
             theme_switch = "light";
             localStorage.setItem("theme", theme_switch);
-            console.log(localStorage.getItem("theme"));
             moonIcon.style.display = "none";
             sunIcon.style.display ="";
         }
@@ -125,7 +123,6 @@ document.addEventListener("DOMContentLoaded", function(){
             body.classList.toggle("darkmode");
             theme_switch = "dark";
             localStorage.setItem("theme", theme_switch);
-            console.log(localStorage.getItem("theme"));
             sunIcon.style.display = "none";
             moonIcon.style.display = "";
         }
@@ -822,7 +819,6 @@ document.addEventListener("DOMContentLoaded", function(){
             
             //calculate total seconds 
             total_org_seconds = (org_min*60) + org_sec; 
-            console.log(`second: ${second}, minute: ${minute}`);
             total_seconds = total_org_seconds - (minute*60 + second);
 
             //assign type to variable 
@@ -917,7 +913,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
                 //set reset as true 
                 resetFlag = true;
-                console.log("reset flag: ", resetFlag);
             
                 //switch reset button as start button
                 resetButton.textContent = "▶";
@@ -956,7 +951,6 @@ document.addEventListener("DOMContentLoaded", function(){
             
                 //set reset as false 
                 resetFlag = false;
-                console.log("reset flag: ", resetFlag);
             }
     }
     }
@@ -1002,8 +996,6 @@ document.addEventListener("visibilitychange", function(){
                 {
                     elapsed = time_now - time_start - totalPausedTime;
                     status = "there's pause start and pause end";
-                    console.log(`pause start: ${timePause_start}, pause end: ${timePause_end}`);
-                    console.log(status);
                 }
                 
                 //if timer has been paused but not resume yet, just display the time from when the time is paused
@@ -1012,7 +1004,6 @@ document.addEventListener("visibilitychange", function(){
     
                     timeDisplay.textContent = display;
                     status = "there's only pause start";
-                    console.log(status);
                     return; 
                 }
     
@@ -1020,16 +1011,13 @@ document.addEventListener("visibilitychange", function(){
                 {
                     elapsed = time_now - time_start;
                     status = "there's no pause start or end";
-                    console.log(status);
                 }
     
                 minute = Math.floor(elapsed / 60000); 
                 second = Math.floor((elapsed % 60000) / 1000);
-                console.log(`minute: ${minute} and second: ${second}`);
     
                 display = `${String(minute).padStart(2, '0')}:${String(second).padStart(2, '0')}`;
                 timeDisplay.textContent = display;
-                console.log(display);
     
             }
     
