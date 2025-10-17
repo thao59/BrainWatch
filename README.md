@@ -1,6 +1,6 @@
 # 🧠 BrainWatch - Intelligent Study Timer & Progress Tracker
 
-> A distraction-free study timer with analytics to help students optimize their focus sessions
+> A distraction-free study timer with analytics to help students optimise their focus sessions
 
 Live Demo (https://brainwatch-production.up.railway.app/) 
 
@@ -22,7 +22,7 @@ The Solution
 BrainWatch is a full-stack web application that tracks study sessions and provides data-driven insights to help users understand their productivity patterns.
 
 ### Key Features
-- **3 Timer Modes**: Pomodoro (25/5), Countdown, and Stopwatch
+- **3 Timer Modes**: Pomodoro, Countdown, and Stopwatch
 - **Progress Analytics**: Weekly study hours, streak tracking, mode effectiveness
 - **Goal Setting**: Set daily targets and track completion
 - **Visual Insights**: Chart.js graphs showing timer usage patterns
@@ -52,7 +52,6 @@ BrainWatch is a full-stack web application that tracks study sessions and provid
 ---
 
 ### Database Models
-```python
 User          # Django authentication
 Profile       # Study sessions with timer type tracking
 Goal          # Daily study targets
